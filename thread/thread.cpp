@@ -28,21 +28,23 @@ public:
     T1(const int i) :i_(i) {
     } 
     
-    void operator()() {
-        std::cout << "Print from class T1" << std::endl;
+    void operator()(const int value) {
+        std::cout << "Print from class T1 value: " << value << std::endl;
     }
 };
 
-void print_function() {
-    std::cout << "Print from function" << std::endl;
+void print_function(const int value) {
+    std::cout << "Print from function value: " << value << std::endl;
 
 }
 
 int main() {
     T1 t{1};
 
-    std::thread t1(t);    
-    std::thread t2(print_function);
+    t(1);
+    
+    std::thread t1(t, 11);
+    std::thread t2(print_function, 22);
     thread_guard tg1{t1};
     thread_guard tg2{t2};       
 }

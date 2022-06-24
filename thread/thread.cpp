@@ -1,7 +1,6 @@
 #include <thread>
 #include <iostream>
 
-
 class thread_guard {
 private:
     std::thread& t_;
@@ -34,7 +33,6 @@ public:
     }
 };
 
-
 void print_function() {
     std::cout << "Print from function" << std::endl;
 
@@ -46,8 +44,5 @@ int main() {
     std::thread t1(t);    
     std::thread t2(print_function);
     thread_guard tg1{t1};
-    thread_guard tg2{t2};
-
-    
-    
+    thread_guard tg2{t2};       
 }
